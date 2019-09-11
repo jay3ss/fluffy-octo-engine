@@ -145,6 +145,22 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Contents}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -181,16 +197,13 @@ setcounter{page}{1}
 
 \end_layout
 
+\begin_layout Section*
+Problem
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-section*{Problem}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -214,10 +227,25 @@ nameref{sec:problem}}
 \end_layout
 
 \begin_layout Standard
-Use recursion and the structure Node, to create a linked list.
- Create the recursive routine of insertRecur that takes a call-by-reference
- Node pointer and the value.
- Put the structure Node and the 
+Use recursion and the structure 
+\family typewriter
+Node
+\family default
+, to create a linked list.
+ Create the recursive routine of 
+\family typewriter
+insertRecur
+\family default
+ that takes a call-by-reference 
+\family typewriter
+Node
+\family default
+ pointer and the value.
+ Put the structure 
+\family typewriter
+Node
+\family default
+ and the 
 \family typewriter
 insertRecur
 \family default
@@ -234,22 +262,30 @@ insertRecur
 rlinked.cpp
 \family default
 .
- Have the third file have the main that will input numbers and call the
- insertRecur routine which will insert in order.
+ Have the third file have the 
+\family typewriter
+main
+\family default
+ that will input numbers and call the 
+\family typewriter
+insertRecur
+\family default
+ routine which will insert in order.
  End on a negative number.
- Then use a for loop to print out the linked list.
+ Then use a 
+\family typewriter
+for
+\family default
+ loop to print out the linked list.
+\end_layout
+
+\begin_layout Section*
+Design
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-section*{Design}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -272,16 +308,13 @@ nameref{sec:design}}
 
 \end_layout
 
+\begin_layout Subsection*
+Class-Responsiblity-Collaboration (CRC) Cards
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-subsection*{Class-Responsiblity-Collaboration (CRC) Cards}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -304,16 +337,13 @@ nameref{subsec:crc}}
 
 \end_layout
 
+\begin_layout Subsection*
+Unified Modeling Language (UML)
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-subsection*{Unified Modeling Language (UML)}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -336,16 +366,13 @@ nameref{subsec:uml}}
 
 \end_layout
 
+\begin_layout Subsection*
+Specifications
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-subsection*{Specifications}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -368,16 +395,13 @@ nameref{subsec:specs}}
 
 \end_layout
 
+\begin_layout Section*
+Tests
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-section*{Tests}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -400,16 +424,13 @@ nameref{sec:tests}}
 
 \end_layout
 
+\begin_layout Subsection*
+Inputs
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-subsection*{Inputs}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -432,16 +453,13 @@ nameref{subsec:inputs}}
 
 \end_layout
 
+\begin_layout Subsection*
+Outputs
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-subsection*{Outputs}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -464,16 +482,13 @@ nameref{subsec:outputs}}
 
 \end_layout
 
+\begin_layout Section*
+Building and Running the Programs
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-section*{Building and Running the Programs}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -496,16 +511,13 @@ nameref{sec:buildrun}}
 
 \end_layout
 
+\begin_layout Subsection*
+Tools Used
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-subsection*{Tools Used}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -528,16 +540,13 @@ nameref{subsec:tools}}
 
 \end_layout
 
+\begin_layout Subsection*
+How to Compile the Program
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-subsection*{How to Compile the Program}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -560,16 +569,13 @@ nameref{subsec:compile}}
 
 \end_layout
 
+\begin_layout Subsection*
+How to Run the Program
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-subsection*{How to Run the Program}
-\end_layout
 
 \begin_layout Plain Layout
 
