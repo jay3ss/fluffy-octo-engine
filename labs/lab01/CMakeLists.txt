@@ -3,19 +3,19 @@ set(CMAKE_CXX_STANDARD 11)
 project(csis212lab01)
 
 # Create the libraries
-add_library(liblistinterface ListInterface.h)
-add_library(librlinked rlinked.h)
+add_library(listinterface ListInterface.h)
+add_library(rlinked rlinked.h)
 
 # Tell the linker that the libraries are in C++
 set_target_properties(
-    liblistinterface
-    librlinked
+    listinterface
+    rlinked
     PROPERTIES LINKER_LANGUAGE CXX
 )
 
 # LinkedList depends on ListInterface
-target_link_libraries(librlinked liblistinterface)
+target_link_libraries(rlinked listinterface)
 
 # Create the executable for the main program
 add_executable(main main.cpp)
-target_link_libraries(main librlinked)
+target_link_libraries(main rlinked)
