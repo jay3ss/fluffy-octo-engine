@@ -1117,6 +1117,142 @@ nameref{subsec:specs}}
 \end_layout
 
 \begin_layout Section*
+Building and Running the Programs
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{sec:buildrun}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{
+\backslash
+nameref{sec:buildrun}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Tools Used
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{subsec:tools}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{subsection}{
+\backslash
+nameref{subsec:tools}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The following tools were used to build the program
+\end_layout
+
+\begin_layout Itemize
+C++ 11
+\end_layout
+
+\begin_layout Itemize
+Ubuntu 18.04
+\end_layout
+
+\begin_layout Itemize
+g++ (version 7.4.0)
+\end_layout
+
+\begin_layout Itemize
+CMake (version 3.10.2)
+\end_layout
+
+\begin_layout Subsection*
+How to Compile the Program
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{subsec:compile}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{subsection}{
+\backslash
+nameref{subsec:compile}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+How to Run the Program
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{subsec:run}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{subsection}{
+\backslash
+nameref{subsec:run}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Tests
 \end_layout
 
@@ -1203,39 +1339,21 @@ nameref{subsec:outputs}}
 
 \end_layout
 
-\begin_layout Section*
-Building and Running the Programs
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-label{sec:buildrun}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-addcontentsline{toc}{section}{
-\backslash
-nameref{sec:buildrun}}
-\end_layout
+\begin_inset FloatList table
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection*
-Tools Used
-\end_layout
-
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1244,16 +1362,14 @@ status open
 
 
 \backslash
-label{subsec:tools}
+label{sec:listoftables}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-addcontentsline{toc}{subsection}{
-\backslash
-nameref{subsec:tools}}
+addcontentsline{toc}{section}{List of Tables}
 \end_layout
 
 \end_inset
@@ -1262,42 +1378,20 @@ nameref{subsec:tools}}
 \end_layout
 
 \begin_layout Standard
-The following tools were used to build the program
-\end_layout
+\begin_inset Newpage newpage
+\end_inset
 
-\begin_layout Subsection*
-How to Compile the Program
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-label{subsec:compile}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-addcontentsline{toc}{subsection}{
-\backslash
-nameref{subsec:compile}}
-\end_layout
+\begin_inset FloatList figure
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection*
-How to Run the Program
-\end_layout
-
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1306,16 +1400,14 @@ status open
 
 
 \backslash
-label{subsec:run}
+label{sec:listoffigures}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-addcontentsline{toc}{subsection}{
-\backslash
-nameref{subsec:run}}
+addcontentsline{toc}{section}{List of Figures}
 \end_layout
 
 \end_inset
