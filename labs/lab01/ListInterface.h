@@ -24,18 +24,15 @@ class ListInterface
     position */
     virtual void entry(int position, T& newEntry) = 0;
 
-    /** Inserts an entry into this list at a given position. An insertion
-    before existing entries causes the renumbering of entries that follow the
-    new one.
-    @pre    1 <= position <= length() + 1
+    /** Inserts an entry into this list in descending order by value. An
+    insertion before existing entries causes the renumbering of entries that
+    follow the new one.
     @post   The entry will be added to the list, the entry will be at the given
     position and the entries following it will be renumbered
-    @param  position The of the entry to insert the new entry
     @param  newPosition A reference to the entry that is to be added to the
             list
-    @return True if 1 <= position <= length() + 1 and insertion was successful,
-            false otherwise */
-    virtual bool insert(int position, T &newEntry) = 0;
+    @return True if the insertion was successful, false otherwise */
+    virtual bool insert(T &newEntry) = 0;
 
     /** Checks if the list is empty.
     @return True if the list is empty, false otherwise*/
