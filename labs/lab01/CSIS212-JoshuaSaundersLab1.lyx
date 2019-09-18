@@ -704,7 +704,7 @@ integer
 \begin_layout Plain Layout
 
 \family typewriter
-+insert(newPosition: integer, newEntry: ItemType):
++insert(newEntry: ItemType):
 \end_layout
 
 \end_inset
@@ -938,7 +938,7 @@ integer
 \begin_layout Plain Layout
 
 \family typewriter
-+insert(newPosition: integer, newEntry: ItemType):
++insert(newEntry: ItemType):
 \end_layout
 
 \end_inset
@@ -1058,7 +1058,7 @@ void
 \begin_layout Plain Layout
 
 \family typewriter
--insertRecur(newPosition: integer, newEntry: ItemType):
++insertRecur(newEntry: ItemType):
 \end_layout
 
 \end_inset
