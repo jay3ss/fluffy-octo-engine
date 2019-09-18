@@ -15,7 +15,7 @@ public:
     LinkedList();
 
     /** Destructor */
-    ~LinkedList();
+    virtual ~LinkedList();
 
     /** Removes all entries from the list
     @post The list is empty and the length is 0 */
