@@ -1319,6 +1319,42 @@ nameref{sec:tests}}
 
 \end_layout
 
+\begin_layout Standard
+The functionality that is tested is (given in chapter 12):
+\end_layout
+
+\begin_layout Itemize
+Test whether the list is empty
+\end_layout
+
+\begin_layout Itemize
+Get the number of entries in the list
+\end_layout
+
+\begin_layout Itemize
+Insert an entry into the list
+\end_layout
+
+\begin_layout Itemize
+Remove a given entry from a the list
+\end_layout
+
+\begin_layout Itemize
+Remove the entry at a given position from a the list
+\end_layout
+
+\begin_layout Itemize
+Remove all entries from the the list
+\end_layout
+
+\begin_layout Itemize
+Get the entry at a given position in the list
+\end_layout
+
+\begin_layout Itemize
+Get the position in a sorted list of a given entry
+\end_layout
+
 \begin_layout Subsection*
 Inputs
 \end_layout
