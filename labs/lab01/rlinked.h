@@ -12,7 +12,7 @@ public:
     LinkedList();
 
     /** Copy constructor */
-    LinkedList();
+    LinkedList(const LinkedList<T>& list);
 
     /** Destructor */
     virtual ~LinkedList();
@@ -66,7 +66,7 @@ public:
 
 private:
     int numEntries_;    // The number of entries currently in  the list
-    Node* head_;        // Pointer to the head node
+    Node<T>* head_;     // Pointer to the head node
 
     /** Inserts an entry into this list (using recursion) in descending order
     by value. An insertion before existing entries causes the renumbering of
