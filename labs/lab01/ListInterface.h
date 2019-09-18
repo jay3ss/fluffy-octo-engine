@@ -22,7 +22,7 @@ class ListInterface
     @param  position The position in the list of the desired entry
     @param  newPosition A reference to the replacement entry at the given
     position */
-    virtual void entry(int position, T& newEntry) = 0;
+    virtual void entry(int position, T* newEntry) = 0;
 
     /** Inserts an entry into this list in descending order by value. An
     insertion before existing entries causes the renumbering of entries that
@@ -32,7 +32,7 @@ class ListInterface
     @param  newPosition A reference to the entry that is to be added to the
             list
     @return True if the insertion was successful, false otherwise */
-    virtual bool insert(T &newEntry) = 0;
+    virtual bool insert(T* newEntry) = 0;
 
     /** Checks if the list is empty.
     @return True if the list is empty, false otherwise*/
