@@ -14,12 +14,14 @@ LinkedList<T>::LinkedList(const LinkedList<T>& list)
 
 }
 
+/** Destructor */
 template<class T>
 LinkedList<T>::~LinkedList()
 {
 
 }
 
+/** Removes all entries from the list */
 template<class T>
 void LinkedList<T>::clear()
 {
@@ -41,8 +43,8 @@ void LinkedList<T>::entry(int position, const T* newEntry)
 }
 
 /** Inserts an entry into this list in descending order by value. An
-    insertion before existing entries causes the renumbering of entries that
-    follow the new one. */
+insertion before existing entries causes the renumbering of entries that follow
+the new one. */
 template<class T>
 bool LinkedList<T>::insert(const T *newEntry)
 {
@@ -64,8 +66,7 @@ int LinkedList<T>::length() const
 }
 
 /** Removes the entry at a given position from the list. A removal before
-    the last entry causes the renumbering of entries that follow the deleted
-    one. */
+the last entry causes the renumbering of entries that follow the deleted one */
 template<class T>
 bool LinkedList<T>::remove(int position)
 {
