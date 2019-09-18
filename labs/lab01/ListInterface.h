@@ -5,6 +5,7 @@
 template<class T>
 class ListInterface
 {
+public:
     /** Removes all entries from the list
     @post The list is empty and the length is 0 */
     virtual void clear() = 0;
