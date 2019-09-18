@@ -1323,36 +1323,36 @@ nameref{sec:tests}}
 The functionality that is tested is (given in chapter 12):
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Test whether the list is empty
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Get the number of entries in the list
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Insert an entry into the list
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Remove a given entry from a the list
 \end_layout
 
-\begin_layout Itemize
-Remove the entry at a given position from a the list
+\begin_layout Enumerate
+Remove the entry at a given position from the list
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Remove all entries from the the list
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Get the entry at a given position in the list
 \end_layout
 
-\begin_layout Itemize
-Get the position in a sorted list of a given entry
+\begin_layout Enumerate
+Get the position in the list of a given entry
 \end_layout
 
 \begin_layout Subsection*
