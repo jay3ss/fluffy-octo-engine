@@ -39,3 +39,7 @@
 
 # Build directory
 *build/
+
+# Ignore VS Code artifacts
+.vscode/
+launch.json
