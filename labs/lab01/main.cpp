@@ -13,6 +13,7 @@ int main()
     // 1. Test whether the list is empty
     cout << "1. The initial list is empty\n"
          << "----------------------------\n"
+         << "The list should be empty\n"
          << "isEmpty(): returns " << intLL.isEmpty()
          << "; should be 1 (true)\n\n";
 
