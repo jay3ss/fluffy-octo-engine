@@ -63,7 +63,7 @@ bool LinkedList<T>::isEmpty() const
 template<class T>
 int LinkedList<T>::length() const
 {
-    return -1;
+    return numEntries_;
 }
 
 /** Removes the entry at a given position from the list. A removal before
