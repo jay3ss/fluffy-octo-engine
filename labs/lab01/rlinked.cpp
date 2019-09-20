@@ -49,7 +49,14 @@ the new one. */
 template<class T>
 bool LinkedList<T>::insert(const T &newEntry)
 {
+    Node<T> *newNodePtr = new Node<T>(newEntry);
+    if (head_ == nullptr)
+    {
+        head_ = newNodePtr;
+    }
 
+    numEntries_++;
+    return true;
 }
 
 /** Checks if the list is empty. */
