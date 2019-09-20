@@ -4,17 +4,20 @@ project(csis212lab01)
 
 # Create the libraries
 add_library(listinterface ListInterface.h)
+add_library(node Node.h)
 add_library(rlinked rlinked.h)
 
 # Tell the linker that the libraries are in C++
 set_target_properties(
     listinterface
+    node
     rlinked
     PROPERTIES LINKER_LANGUAGE CXX
 )
 
 # LinkedList depends on ListInterface
-target_link_libraries(rlinked listinterface)
+target_link_libraries(rlinked listinterface node)
+# target_link_libraries(rlinked node)
 
 # Create the executable for the main program
 add_executable(main main.cpp)
