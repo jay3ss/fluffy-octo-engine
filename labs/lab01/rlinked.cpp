@@ -56,7 +56,7 @@ bool LinkedList<T>::insert(const Node<T> *newEntry)
 template<class T>
 bool LinkedList<T>::isEmpty() const
 {
-    return false;
+    return numEntries_ == 0;
 }
 
 /** Gets the number of entries in the list */
