@@ -53,7 +53,7 @@ int main()
          << "; should be 1 (true)\n\n";
 
     // a. Get the number of entries in the list
-    cout << "The number of entries should be 3\n"4
+    cout << "The number of entries should be 4\n"
          << "length(): returns " << intLL.length()
          << "; should be 4\n\n";
 
