@@ -23,17 +23,16 @@ public:
     @param  position The position in the list of the desired entry
     @param  newPosition A reference to the replacement entry at the given
     position */
-    virtual void entry(int position, const T* newEntry) = 0;
+    virtual void entry(int position, const T &newEntry) = 0;
 
-    /** Inserts an entry into this list in descending order by value. An
-    insertion before existing entries causes the renumbering of entries that
-    follow the new one.
-    @post   The entry will be added to the list, the entry will be at the given
+    /** Inserts an entry into this sorted list in its proper order
+    so that the list remains sorted
+    @post   newEntry is in the list, and the list is sorted
     position and the entries following it will be renumbered
-    @param  newPosition A reference to the entry that is to be added to the
+    @param  newEntry A reference to the entry that is to be added to the
             list
-    @return True if the insertion was successful, false otherwise */
-    virtual bool insert(const T* newEntry) = 0;
+    @return True if the insertion was successful and 1 <= position <= length, false otherwise */
+    virtual bool insert(const T &newEntry) = 0;
 
     /** Checks if the list is empty.
     @return True if the list is empty, false otherwise*/
@@ -43,15 +42,14 @@ public:
     @return The integer number of entries in the list */
     virtual int length() const = 0;
 
-    /** Removes the entry at a given position from the list. A removal before
-    the last entry causes the renumbering of entries that follow the deleted
-    one.
-    @pre    1 <= position <= length()
+    /** Removes the first or only occurrence of the given entry from this
+    sorted list
     @post   The entry at the given position will be removed and the length will
             be decreased by one
-    @param  position The position of the entry to remove
-    @return True if the entry was removed, false otherwise */
-    virtual bool remove(int position) = 0;
+    @param  anEntry The entry to remove
+    @return True if the entry was successfully removed, false otherwise */
+    // virtual bool remove(int position) = 0;
+    virtual bool remove(const T &anEntry) = 0;
 };
 
 #endif // _LIST_INTERFACE_H
