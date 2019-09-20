@@ -42,9 +42,9 @@ public:
     follow the new one.
     @post   The entry will be added to the list, the entry will be at the given
             position and the entries following it will be renumbered
-    @param  newEntry A reference to the entry that is to be added to the list
+    @param  newEntry A pointer to the entry that is to be added to the list
     @return True if the insertion was successful, false otherwise */
-    bool insert(const Node<T> *newEntry);
+    bool insertRecur(const Node<T> *newEntry);
 
     /** Checks if the list is empty.
     @return True if the list is empty, false otherwise*/
@@ -74,19 +74,11 @@ public:
     @return True if the entry was removed, false otherwise */
     bool remove(const Node<T> *anEntry);
 
-    private:
+private:
     int numEntries_;    // The number of entries currently in  the list
     Node<T>* head_;     // Pointer to the head node
 
-    /** Inserts an entry into this list (using recursion) in descending order
-    by value. An insertion before existing entries causes the renumbering of
-    entries that follow the new one.
-    @post   The entry will be added to the list, the entry will be at the given
-    position and the entries following it will be renumbered
-    @param  newPosition A reference to the entry that is to be added to the
-            list
-    @return True if the insertion was successful, false otherwise */
-    bool insertRecur(const T *newEntry);
+    Node<T> *getNodeBefore(const Node<T>* node);
 };
 
 #include "rlinked.cpp"

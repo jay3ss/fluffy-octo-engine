@@ -47,9 +47,18 @@ void LinkedList<T>::entry(int position, const Node<T>* newEntry)
 insertion before existing entries causes the renumbering of entries that follow
 the new one. */
 template<class T>
-bool LinkedList<T>::insert(const Node<T> *newEntry)
+bool LinkedList<T>::insertRecur(const Node<T> *newEntry)
 {
-    return false;
+    Node<T> *newNodePtr = new Node<T>(newEntry->data);
+    if (head_ == nullptr)
+    {
+        // The list is empty
+        head_ = new Node<T>(newEntry->data);
+    }
+    else
+    {
+
+    }
 }
 
 /** Checks if the list is empty. */
@@ -78,15 +87,6 @@ bool LinkedList<T>::remove(int position)
 the last entry causes the renumbering of entries that follow the deleted one */
 template <class T>
 bool LinkedList<T>::remove(const Node<T> *anEntry)
-{
-    return false;
-}
-
-/** Inserts an entry into this list (using recursion) in descending order by
-value. An insertion before existing entries causes the renumbering of entries
-that follow the new one. */
-template<class T>
-bool LinkedList<T>::insertRecur(const T *newEntry)
 {
     return false;
 }
