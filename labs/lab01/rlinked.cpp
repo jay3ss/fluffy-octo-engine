@@ -4,7 +4,8 @@
 template<class T>
 LinkedList<T>::LinkedList()
 {
-
+    numEntries_ = 0;
+    head_ = nullptr;
 }
 
 /** Copy constructor */
@@ -37,7 +38,7 @@ T LinkedList<T>::entry(int position) const
 
 /** Gets the entry at the given position in the list */
 template<class T>
-void LinkedList<T>::entry(int position, const T* newEntry)
+void LinkedList<T>::entry(int position, const Node<T>* newEntry)
 {
 
 }
@@ -46,7 +47,7 @@ void LinkedList<T>::entry(int position, const T* newEntry)
 insertion before existing entries causes the renumbering of entries that follow
 the new one. */
 template<class T>
-bool LinkedList<T>::insert(const T *newEntry)
+bool LinkedList<T>::insert(const Node<T> *newEntry)
 {
     return false;
 }
@@ -67,8 +68,16 @@ int LinkedList<T>::length() const
 
 /** Removes the entry at a given position from the list. A removal before
 the last entry causes the renumbering of entries that follow the deleted one */
-template<class T>
+template <class T>
 bool LinkedList<T>::remove(int position)
+{
+    return false;
+}
+
+/** Removes the entry at a given position from the list. A removal before
+the last entry causes the renumbering of entries that follow the deleted one */
+template <class T>
+bool LinkedList<T>::remove(const Node<T> *anEntry)
 {
     return false;
 }

@@ -1,11 +1,12 @@
 #ifndef _R_LINKED_H
 #define _R_LINKED_H
 
-#include "ListInterface.h"
+// #include "ListInterface.h"
 #include "Node.h"
 
 template <class T>
-class LinkedList : public ListInterface<T>
+// class LinkedList : public ListInterface<T>
+class LinkedList
 {
 public:
     /** Constructor */
@@ -34,17 +35,16 @@ public:
     @param  position The position in the list of the desired entry
     @param  newPosition A reference to the replacement entry at the given
     position */
-    void entry(int position, const T *newEntry);
+    void entry(int position, const Node<T> *newEntry);
 
     /** Inserts an entry into this list in descending order by value. An
     insertion before existing entries causes the renumbering of entries that
     follow the new one.
     @post   The entry will be added to the list, the entry will be at the given
-    position and the entries following it will be renumbered
-    @param  newPosition A reference to the entry that is to be added to the
-            list
+            position and the entries following it will be renumbered
+    @param  newEntry A reference to the entry that is to be added to the list
     @return True if the insertion was successful, false otherwise */
-    bool insert(const T *newEntry);
+    bool insert(const Node<T> *newEntry);
 
     /** Checks if the list is empty.
     @return True if the list is empty, false otherwise*/
@@ -64,7 +64,17 @@ public:
     @return True if the entry was removed, false otherwise */
     bool remove(int position);
 
-private:
+    /** Removes the entry at a given position from the list. A removal before
+    the last entry causes the renumbering of entries that follow the deleted
+    one.
+    @pre    1 <= position <= length()
+    @post   The entry at the given position will be removed and the length will
+            be decreased by one
+    @param  position The position of the entry to remove
+    @return True if the entry was removed, false otherwise */
+    bool remove(const Node<T> *anEntry);
+
+    private:
     int numEntries_;    // The number of entries currently in  the list
     Node<T>* head_;     // Pointer to the head node
 
