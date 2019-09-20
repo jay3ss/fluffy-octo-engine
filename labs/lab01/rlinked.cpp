@@ -50,12 +50,8 @@ template<class T>
 bool LinkedList<T>::insert(const T &newEntry)
 {
     Node<T> *newNodePtr = new Node<T>(newEntry);
-    if (head_ == nullptr)
-    {
-        head_ = newNodePtr;
-    }
+    head_ = insertRecur(newNodePtr, head_);
 
-    numEntries_++;
     return true;
 }
 
@@ -92,8 +88,24 @@ bool LinkedList<T>::remove(const T &anEntry)
 /** Inserts an entry into this list (using recursion) in descending order by
 value. An insertion before existing entries causes the renumbering of entries
 that follow the new one. */
-template<class T>
-bool LinkedList<T>::insertRecur(const Node<T> *newEntry, T &data)
+template <class T>
+Node<T> *LinkedList<T>::insertRecur(Node<T> *newNodePtr, Node<T> *subChainPtr)
 {
-    return false;
+    if (subChainPtr == nullptr)
+    {
+        subChainPtr = newNodePtr;
+    }
+    else if (subChainPtr->data < newNodePtr->data)
+    {
+        subChainPtr = insertRecur(newNodePtr, subChainPtr->next);
+    }
+    else
+    {
+        // Node<T> *oldNodeNextPtr = subChainPtr->next;
+        newNodePtr->next = subChainPtr->next;
+        subChainPtr->next = newNodePtr;
+    }
+
+    numEntries_++;
+    return subChainPtr;
 }
