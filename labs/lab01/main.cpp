@@ -54,9 +54,9 @@ int main()
          << "; should be 1 (true)\n\n";
 
     // a. Get the number of entries in the list
-    cout << "The number of entries should be 4\n"
+    cout << "The number of entries should be 5\n"
          << "length(): returns " << intLL.length()
-         << "; should be 4\n\n";
+         << "; should be 5\n\n";
 
     // 5. Remove the entry at a given position from the list
     // We'll remove an arbitrary entry, let's say the third one
