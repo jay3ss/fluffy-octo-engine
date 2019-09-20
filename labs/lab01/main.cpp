@@ -24,12 +24,12 @@ int main()
          << "; should be 0\n\n";
 
     // 3. Insert an entry into the list
-    Node<int> node(5);
+    int data = 5;
 
     cout << "3. Insert an entry into the list\n"
          << "--------------------------------\n"
          << "The node should have been inserted\n"
-         << "insert(node): returns " << intLL.insert(&node)
+         << "insert(node): returns " << intLL.insert(data)
          << "; should be 1 (true)\n\n";
 
     // a. Get the number of entries in the (non-empty) list
@@ -40,8 +40,8 @@ int main()
     // Add a few entries to the list for the following tests
     for (int i = 0; i < 5; i++)
     {
-        node.data = i;
-        intLL.insert(&node);
+        data = i;
+        intLL.insert(data);
     }
 
     // 4. Remove a given entry entry from the list
@@ -49,7 +49,7 @@ int main()
     cout << "4. Remove a given entry from the list\n"
          << "-------------------------------------\n"
          << "The node should have been removed\n"
-         << "remove(node): returns " << intLL.remove(&node)
+         << "remove(node): returns " << intLL.remove(data)
          << "; should be 1 (true)\n\n";
 
     // a. Get the number of entries in the list
@@ -100,8 +100,8 @@ int main()
     // Add a few entries to the list to test the printing of the list
     for (int i = 0; i < 5; i++)
     {
-        node.data = i;
-        intLL.insert(&node);
+        data = i;
+        intLL.insert(data);
     }
 
     // Print out the entires in the list
