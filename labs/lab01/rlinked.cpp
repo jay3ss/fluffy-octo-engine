@@ -61,8 +61,7 @@ the new one. */
 template<class T>
 bool LinkedList<T>::insert(const T &newEntry)
 {
-    Node<T> *newNodePtr = new Node<T>(newEntry);
-    head_ = insertRecur(newNodePtr, head_);
+    head_ = insertRecur(head_, newEntry);
 
     return true;
 }
@@ -101,23 +100,53 @@ bool LinkedList<T>::remove(const T &anEntry)
 value. An insertion before existing entries causes the renumbering of entries
 that follow the new one. */
 template <class T>
-Node<T> *LinkedList<T>::insertRecur(Node<T> *newNodePtr, Node<T> *subChainPtr)
+Node<T> *LinkedList<T>::insertRecur(Node<T> *subChainPtr, const T &newEntry)
 {
     if (subChainPtr == nullptr)
     {
-        subChainPtr = newNodePtr;
+        subChainPtr = newNode(newEntry);
     }
-    else if (subChainPtr->data < newNodePtr->data)
+    else if ((subChainPtr != nullptr) && (subChainPtr->data > newEntry))
     {
-        subChainPtr = insertRecur(newNodePtr, subChainPtr->next);
+        subChainPtr = insertRecur(subChainPtr->next, newEntry);
     }
     else
     {
-        // Node<T> *oldNodeNextPtr = subChainPtr->next;
-        newNodePtr->next = subChainPtr->next;
+        Node<T> *newNodePtr = newNode(newEntry);
+        Node<T> *oldNodeNextPtr = subChainPtr->next;
+
         subChainPtr->next = newNodePtr;
+        newNodePtr->next = oldNodeNextPtr;
     }
+
+    // if ((subChainPtr != nullptr) && (subChainPtr->data < newNodePtr->data))
+    // {
+    //     subChainPtr = insertRecur(newNodePtr, subChainPtr->next);
+    // }
+    // else
+    // {
+    //     Node<T> *oldNodeNextPtr = subChainPtr->next;
+
+    //     subChainPtr->next = newNodePtr;
+    //     newNodePtr->next = oldNodeNextPtr;
+    // }
 
     numEntries_++;
     return subChainPtr;
+}
+
+/** Allocates memory for a new Node */
+template<class T>
+Node<T>* LinkedList<T>::newNode(T data)
+{
+    Node<T>* newNodePtr = new Node<T>(data);
+    return newNodePtr;
+}
+
+/** Frees up previously allocated memory for a Node */
+template<class T>
+void LinkedList<T>::deleteNode(Node<T>* &node)
+{
+    delete node;
+    node = nullptr;
 }
