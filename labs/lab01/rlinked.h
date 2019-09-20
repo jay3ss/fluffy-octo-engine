@@ -86,7 +86,7 @@ private:
     @param  newPosition A reference to the entry that is to be added to the
             list
     @return True if the insertion was successful, false otherwise */
-    bool insertRecur(const Node<T> *newEntry, T &data);
+    Node<T> *insertRecur(Node<T> *newNodePtr, Node<T> *subChainPtr);
 };
 
 #include "rlinked.cpp"
