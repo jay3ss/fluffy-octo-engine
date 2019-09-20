@@ -29,14 +29,14 @@ void LinkedList<T>::clear()
 
 }
 
-/** Replaces the entry at the given position in the list */
+/** Gets the entry at the given position in the list */
 template <class T>
 T LinkedList<T>::entry(int position) const
 {
 
 }
 
-/** Gets the entry at the given position in the list */
+/** Replaces the entry at the given position in the list */
 template<class T>
 void LinkedList<T>::entry(int position, const T &newEntry)
 {
