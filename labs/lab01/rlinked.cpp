@@ -33,7 +33,19 @@ void LinkedList<T>::clear()
 template <class T>
 T LinkedList<T>::entry(int position) const
 {
+    // NOTE: this needs to raise an error if not 1 <= position <= length
+    Node<T>* tempNodePtr = head_;
+    if (1 <= position && position <= length())
+    {
+        int entryNum = 1;
+        while (tempNodePtr != nullptr && entryNum < position)
+        {
+            tempNodePtr = tempNodePtr->next;
+            entryNum++;
+        }
+    }
 
+    return tempNodePtr->data;
 }
 
 /** Replaces the entry at the given position in the list */
