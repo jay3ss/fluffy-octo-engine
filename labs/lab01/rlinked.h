@@ -46,6 +46,16 @@ public:
     @return True if the insertion was successful, false otherwise */
     bool insert(const T &newEntry);
 
+    /** Inserts an entry into this list (using recursion) in descending order
+    by value. An insertion before existing entries causes the renumbering of
+    entries that follow the new one.
+    @post   The entry will be added to the list, the entry will be at the given
+    position and the entries following it will be renumbered
+    @param  newPosition A reference to the entry that is to be added to the
+            list
+    @return True if the insertion was successful, false otherwise */
+    Node<T> *insertRecur(Node<T> *subChainPtr, const T &newEntry);
+
     /** Checks if the list is empty.
     @return True if the list is empty, false otherwise*/
     bool isEmpty() const;
@@ -77,16 +87,6 @@ public:
 private:
     int numEntries_;    // The number of entries currently in  the list
     Node<T>* head_;     // Pointer to the head node
-
-    /** Inserts an entry into this list (using recursion) in descending order
-    by value. An insertion before existing entries causes the renumbering of
-    entries that follow the new one.
-    @post   The entry will be added to the list, the entry will be at the given
-    position and the entries following it will be renumbered
-    @param  newPosition A reference to the entry that is to be added to the
-            list
-    @return True if the insertion was successful, false otherwise */
-    Node<T> *insertRecur(Node<T> *subChainPtr, const T &newEntry);
 
     /** Allocates memory for a new Node
     @post   Memory will be allocated for a new Node. This memory must be
