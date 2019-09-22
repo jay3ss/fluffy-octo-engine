@@ -112,6 +112,5 @@ int main()
         cout << "Entry " << (i + 1) << ":\t" << intLL.entry(i) << endl;
     }
 
-
     return 0;
 }
