@@ -96,42 +96,23 @@ bool LinkedList<T>::remove(const T &anEntry)
     return false;
 }
 
-/** Inserts an entry into this list (using recursion) in descending order by
-value. An insertion before existing entries causes the renumbering of entries
-that follow the new one. */
+/** Inserts an entry into this list (using recursion) in FIFO order by. */
 template <class T>
 Node<T> *LinkedList<T>::insertRecur(Node<T> *subChainPtr, const T &newEntry)
 {
+    // The list is empty, or we've reached the end of the chain
     if (subChainPtr == nullptr)
     {
         subChainPtr = newNode(newEntry);
+        numEntries_++;
     }
-    else if ((subChainPtr != nullptr) && (subChainPtr->data > newEntry))
-    {
-        subChainPtr = insertRecur(subChainPtr->next, newEntry);
-    }
+    // Keep going down the chain
     else
     {
-        Node<T> *newNodePtr = newNode(newEntry);
-        Node<T> *oldNodeNextPtr = subChainPtr->next;
-
-        subChainPtr->next = newNodePtr;
-        newNodePtr->next = oldNodeNextPtr;
+        Node<T>* nodePtr = insertRecur(subChainPtr->next, newEntry);
+        subChainPtr->next = nodePtr;
     }
 
-    // if ((subChainPtr != nullptr) && (subChainPtr->data < newNodePtr->data))
-    // {
-    //     subChainPtr = insertRecur(newNodePtr, subChainPtr->next);
-    // }
-    // else
-    // {
-    //     Node<T> *oldNodeNextPtr = subChainPtr->next;
-
-    //     subChainPtr->next = newNodePtr;
-    //     newNodePtr->next = oldNodeNextPtr;
-    // }
-
-    numEntries_++;
     return subChainPtr;
 }
 
