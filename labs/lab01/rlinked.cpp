@@ -1,12 +1,8 @@
 #include "rlinked.h"
 
 /** Constructor */
-template<class T>
-LinkedList<T>::LinkedList()
-{
-    numEntries_ = 0;
-    head_ = nullptr;
-}
+template <class T>
+LinkedList<T>::LinkedList(Node<T> *h) : numEntries_(0), head_(h) {}
 
 /** Copy constructor */
 template<class T>

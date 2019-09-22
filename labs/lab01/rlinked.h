@@ -10,7 +10,7 @@ class LinkedList
 {
 public:
     /** Constructor */
-    LinkedList();
+    LinkedList(Node<T> *h);
 
     /** Copy constructor */
     LinkedList(const LinkedList<T>& list);
