@@ -109,7 +109,7 @@ int main()
     int listLength = intLL.length();
     for (int i = 0; i < listLength; i++)
     {
-        cout << "Entry " << i << ":\t" << intLL.entry(i) << endl;
+        cout << "Entry " << (i + 1) << ":\t" << intLL.entry(i) << endl;
     }
 
 
