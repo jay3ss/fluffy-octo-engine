@@ -61,8 +61,7 @@ the new one. */
 template<class T>
 bool LinkedList<T>::insert(const T &newEntry)
 {
-    Node<T> *newNodePtr = new Node<T>(newEntry);
-    head_ = insertRecur(newNodePtr, head_);
+    head_ = insertRecur(head_, newEntry);
 
     return true;
 }
@@ -97,27 +96,38 @@ bool LinkedList<T>::remove(const T &anEntry)
     return false;
 }
 
-/** Inserts an entry into this list (using recursion) in descending order by
-value. An insertion before existing entries causes the renumbering of entries
-that follow the new one. */
+/** Inserts an entry into this list (using recursion) in FIFO order by. */
 template <class T>
-Node<T> *LinkedList<T>::insertRecur(Node<T> *newNodePtr, Node<T> *subChainPtr)
+Node<T> *LinkedList<T>::insertRecur(Node<T> *subChainPtr, const T &newEntry)
 {
+    // The list is empty, or we've reached the end of the chain
     if (subChainPtr == nullptr)
     {
-        subChainPtr = newNodePtr;
+        subChainPtr = newNode(newEntry);
+        numEntries_++;
     }
-    else if (subChainPtr->data < newNodePtr->data)
-    {
-        subChainPtr = insertRecur(newNodePtr, subChainPtr->next);
-    }
+    // Keep going down the chain
     else
     {
-        // Node<T> *oldNodeNextPtr = subChainPtr->next;
-        newNodePtr->next = subChainPtr->next;
-        subChainPtr->next = newNodePtr;
+        Node<T>* nodePtr = insertRecur(subChainPtr->next, newEntry);
+        subChainPtr->next = nodePtr;
     }
 
-    numEntries_++;
     return subChainPtr;
+}
+
+/** Allocates memory for a new Node */
+template<class T>
+Node<T>* LinkedList<T>::newNode(T data)
+{
+    Node<T>* newNodePtr = new Node<T>(data);
+    return newNodePtr;
+}
+
+/** Frees up previously allocated memory for a Node */
+template<class T>
+void LinkedList<T>::deleteNode(Node<T>* &node)
+{
+    delete node;
+    node = nullptr;
 }

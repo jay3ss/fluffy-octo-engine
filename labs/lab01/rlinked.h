@@ -86,7 +86,20 @@ private:
     @param  newPosition A reference to the entry that is to be added to the
             list
     @return True if the insertion was successful, false otherwise */
-    Node<T> *insertRecur(Node<T> *newNodePtr, Node<T> *subChainPtr);
+    Node<T> *insertRecur(Node<T> *subChainPtr, const T &newEntry);
+
+    /** Allocates memory for a new Node
+    @post   Memory will be allocated for a new Node. This memory must be
+    unallocated when finished with the Node
+    @param  data The data that the Node will hold
+    @return A pointer to the newly allocated memory for the Node */
+    Node<T>* newNode(T data);
+
+    /** Frees up previously allocated memory for a Node
+    @pre    Must have previously allocated memory for a Node
+    @post   The Node will be deleted
+    @param  node Reference to a pointer to a Node */
+    void deleteNode(Node<T>* &node);
 };
 
 #include "rlinked.cpp"
