@@ -5,8 +5,8 @@
 #include "Node.h"
 
 template <class T>
-class LinkedList : public ListInterface<T>
-// class LinkedList
+// class LinkedList : public ListInterface<T>
+class LinkedList
 {
 public:
     /** Constructor */
