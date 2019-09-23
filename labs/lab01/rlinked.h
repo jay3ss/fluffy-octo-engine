@@ -51,9 +51,10 @@ public:
     entries that follow the new one.
     @post   The entry will be added to the list, the entry will be at the given
     position and the entries following it will be renumbered
+    @param  subChainPtr The head pointer
     @param  newPosition A reference to the entry that is to be added to the
             list
-    @return True if the insertion was successful, false otherwise */
+    @return The head pointer */
     Node<T> *insertRecur(Node<T>* &subChainPtr, const T &newEntry);
 
     /** Checks if the list is empty.
@@ -64,26 +65,20 @@ public:
     @return The integer number of entries in the list */
     int length() const;
 
-    /** Removes the given entry from the list. A removal before the last entry
+    /** Removes the entry at a given position from this list. A removal before the last entry
     causes the renumbering of entries that follow the deleted
     one.
-    @pre    The given entry should be in the list
-    @post   The given entry will be removed and the length will be decreased by
-    one
-    @param  anEntru The entry to remove
+    @post If 1 <= position <= getLength() and the removal is successful, the
+    entry at the given position in the list is removed, other items are
+    renumbered accordingly, and the returned value is true.
+    @param position The list position of the entry to remove.
     @return True if the entry was removed, false otherwise */
-    bool remove(const T &anEntry);
+    bool remove(int position);
 
     Node<T> *head; // Pointer to the head node
 
 private:
     int numEntries_;    // The number of entries currently in  the list
-
-    /** Finds the position of an entry in the list, if it is in the list
-    @param  anEntry The entry to find the position of
-    @return The position (>= 1) of the entry if it is in the list, -1 if the
-    entry is not in the list */
-    int positionOf(T &anEntry);
 
     /** Allocates memory for a new Node
     @post   Memory will be allocated for a new Node. This memory must be
@@ -97,6 +92,18 @@ private:
     @post   The Node will be deleted
     @param  node Reference to a pointer to a Node */
     void deleteNode(Node<T> *&node);
+
+    /** Locates a specified node in the list
+    @pre    1 <= position <= length()
+    @post   The Node is found and a pointer to it is retruned
+    @param  position The position of the Node to find
+    @return A pointer to the Node at the given position*/
+    Node<T>* nodeAt(int position) const;
+};
+
+// Exception class
+class PreconditionViolatedExcep
+{
 };
 
 #include "rlinked.cpp"

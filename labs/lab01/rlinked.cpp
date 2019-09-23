@@ -22,7 +22,15 @@ LinkedList<T>::~LinkedList()
 template<class T>
 void LinkedList<T>::clear()
 {
-
+    // T anEntry = entry(1);
+    while (!isEmpty())
+    {
+        remove(1);
+        // if (!isEmpty())
+        // {
+        //     anEntry = entry(1);
+        // }
+    }
 }
 
 /** Gets the entry at the given position in the list */
@@ -39,16 +47,20 @@ T LinkedList<T>::entry(int position) const
             tempNodePtr = tempNodePtr->next;
             entryNum++;
         }
+        return tempNodePtr->data;
     }
-
-    return tempNodePtr->data;
+    else
+    {
+        throw PreconditionViolatedExcep();
+    }
 }
 
 /** Replaces the entry at the given position in the list */
-template<class T>
+template <class T>
 void LinkedList<T>::entry(int position, const T &newEntry)
 {
-
+    Node<T>* nodePtr = nodeAt(position);
+    nodePtr->data = newEntry;
 }
 
 /** Inserts an entry into this list in descending order by value. An
@@ -76,48 +88,72 @@ int LinkedList<T>::length() const
     return numEntries_;
 }
 
-/** Removes the entry at a given position from the list. A removal before
-the last entry causes the renumbering of entries that follow the deleted one */
-// template <class T>
-// bool LinkedList<T>::remove(int position)
-// {
-//     return false;
-// }
-
-/** Removes the entry at a given position from the list. A removal before
-the last entry causes the renumbering of entries that follow the deleted one */
+/** Removes the entry at a given position from this list. A removal before the
+last entry causes the renumbering of entries that follow the deleted */
 template <class T>
-bool LinkedList<T>::remove(const T &anEntry)
+bool LinkedList<T>::remove(int position)
 {
-    return false;
+    // If the list is empty, there's nothing to remove
+    if (isEmpty())
+    {
+        return false;
+    }
+
+    // Enforce the precondition of 1 <= position <= length()
+    bool canRemove = (1 <= position) && (position <= length());
+
+    if (canRemove)
+    {
+        Node<T> *currNodePtr = nullptr;
+        if (position == 1)
+        {
+            currNodePtr = head;
+            head = head->next;
+        }
+        else
+        {
+            Node<T> *prevNodePtr = nodeAt(position - 1);
+
+            currNodePtr = prevNodePtr->next;
+            prevNodePtr->next = currNodePtr->next;
+
+        }
+
+        currNodePtr->next = nullptr;
+        deleteNode(currNodePtr);
+        numEntries_--;
+    }
+    else
+    {
+        throw PreconditionViolatedExcep();
+    }
+
+    // The entry was not found, so return false
+    return canRemove;
 }
 
 /** Inserts an entry into this list (using recursion) in FIFO order by. */
 template <class T>
 Node<T> *LinkedList<T>::insertRecur(Node<T>* &subChainPtr, const T &newEntry)
 {
-    // The list is empty, or we've reached the end of the chain
     if (isEmpty())
     {
-        // Node<T>* nodePtr = newNode(newEntry);
+        // The list is empty, so insert at the head pointer
+        subChainPtr = newNode(newEntry);
         head = subChainPtr;
-        // subChainPtr = nodePtr;
         numEntries_++;
     }
     else if (subChainPtr == nullptr)
     {
-        Node<T>* newNodePtr = newNode(newEntry);
-        subChainPtr = newNodePtr;
+        // We've traversed the chain and now we're at the end
         numEntries_++;
+        return newNode(newEntry);
     }
-    // Keep going down the chain
     else
     {
-        Node<T>* nodePtr = insertRecur(subChainPtr->next, newEntry);
-        subChainPtr->next = nodePtr;
-        // head = subChainPtr;
+        // Still in the middle of the chain so keep going down
+        subChainPtr->next = insertRecur(subChainPtr->next, newEntry);
     }
-
 
     return subChainPtr;
 }
@@ -136,4 +172,18 @@ void LinkedList<T>::deleteNode(Node<T>* &node)
 {
     delete node;
     node = nullptr;
+}
+
+/** Locates a specified node in the list */
+template<class T>
+Node<T>* LinkedList<T>::nodeAt(int position) const
+{
+    Node<T>* nodePtr = head;
+
+    for (int count = 1; count < position; count++)
+    {
+        nodePtr = nodePtr->next;
+    }
+
+    return nodePtr;
 }

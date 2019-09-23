@@ -4,7 +4,7 @@
 template<typename T>
 struct Node
 {
-    Node(T d, Node<T> *n = nullptr) : data(d), next(n) {}
+    Node(T d) : data(d), next(nullptr) {}
     T data;
     Node* next;
 };

@@ -32,8 +32,9 @@ int main()
     cout << "3. Insert an entry into the list\n"
          << "--------------------------------\n"
          << "The node should have been inserted\n"
-         << "insertRecur(node, data): returns " << intLL.insertRecur(nodePtr, data)
-         << "; should be 1 (true)\n\n";
+         << "intLL.insertRecur(nodePtr, data)\n\n";
+
+    intLL.insertRecur(nodePtr, data);
 
     // a. Get the number of entries in the (non-empty) list
     cout << "The number of entries should be 1\n"
@@ -43,17 +44,14 @@ int main()
     // Add a few entries to the list for the following tests
     for (int i = 0; i < 5; i++)
     {
-        data = i;
-        // nodePtr->data = data;
-        intLL.insertRecur(nodePtr, data);
+        intLL.insertRecur(nodePtr, i);
     }
 
     // 4. Remove a given entry entry from the list
-    // NOTE: node.data = 4
-    cout << "4. Remove a given entry from the list\n"
-         << "-------------------------------------\n"
-         << "The node should have been removed\n"
-         << "remove(node): returns " << intLL.remove(data)
+    cout << "4. Remove an entry at a given position from the list\n"
+         << "----------------------------------------------------\n"
+         << "The third node should have been removed\n"
+         << "remove(3): returns " << intLL.remove(3)
          << "; should be 1 (true)\n\n";
 
     // a. Get the number of entries in the list
@@ -70,23 +68,23 @@ int main()
          << "; should be 1 (true)\n\n";
 
     // a. Get the number of entries in the list
-    cout << "The number of entries should be 3\n"
+    cout << "The number of entries should be 4\n"
          << "length(): returns " << intLL.length()
-         << "; should be 3\n\n";
+         << "; should be 4\n\n";
 
     // 6. Get the entry at a given position in the list
     cout << "6. Get the entry at a given position in the list\n"
          << "------------------------------------------------\n"
          << "The entry should have been returned\n"
          << "entry(2): returns " << intLL.entry(2)
-         << "; should be 1\n\n";
+         << "; should be 0\n\n";
 
     // 7. Get the position in the list of a given entry
     cout << "7. Get the entry at a given position in the list\n"
          << "------------------------------------------------\n"
          << "The entry should have been returned\n"
          << "entry(2): returns " << intLL.entry(2)
-         << "; should be 1\n\n";
+         << "; should be 0\n\n";
 
     // 8. Remove all entries from the list
     intLL.clear();
@@ -102,18 +100,33 @@ int main()
          << "; should be 0\n\n";
 
     // Add a few entries to the list to test the printing of the list
-    for (int i = 0; i < 5; i++)
+    for (int i = 5; i >= -5; i--)
     {
-        // data = i;
-        // nodePtr->data = i;
-        intLL.insertRecur(nodePtr, i);
+        nodePtr = intLL.insertRecur(nodePtr, i);
     }
+
+    // 9. An specified entry is be replaced with a new, given entry
+    int position = 6;
+    int newEntry = 1000000;
+    int oldEntry = intLL.entry(position);
+    intLL.entry(position, newEntry);
+    cout << "9. An specified entry is be replaced with a new, given entry\n"
+         << "------------------------------------------------------------\n"
+         << "int oldEntry = intLL.entry(6);\n"
+         << "int newEntry = 1000000;\n"
+         << "intLL.entry(6, newEntry);\n\n"
+         << "oldEntry == intLL.entry(6): returns "
+         << (oldEntry == intLL.entry(6))
+         << "; should be 0 (false)\n"
+         << "newEntry == intLL.entry(6): returns "
+         << (newEntry == intLL.entry(6))
+         << "; should be 1 (true)\n\n";
 
     // Print out the entires in the list
     int listLength = intLL.length();
-    for (int i = 0; i < listLength  + 1; i++)
+    for (int i = 1; i < listLength + 1; i++)
     {
-        cout << "Entry " << (i + 1) << ":\t" << intLL.entry(i) << endl;
+        cout << "Entry " << i << ":\t" << intLL.entry(i) << endl;
     }
 
     return 0;
