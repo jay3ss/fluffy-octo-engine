@@ -26,11 +26,13 @@ int main()
 
     // 3. Insert an entry into the list
     int data = 5;
+    // Create the head pointer
+    Node<int>* nodePtr = new Node<int>(data);
 
     cout << "3. Insert an entry into the list\n"
          << "--------------------------------\n"
          << "The node should have been inserted\n"
-         << "insert(node): returns " << intLL.insert(data)
+         << "insertRecur(node, data): returns " << intLL.insertRecur(nodePtr, data)
          << "; should be 1 (true)\n\n";
 
     // a. Get the number of entries in the (non-empty) list
@@ -42,7 +44,8 @@ int main()
     for (int i = 0; i < 5; i++)
     {
         data = i;
-        intLL.insert(data);
+        // nodePtr->data = data;
+        intLL.insertRecur(nodePtr, data);
     }
 
     // 4. Remove a given entry entry from the list
@@ -101,8 +104,9 @@ int main()
     // Add a few entries to the list to test the printing of the list
     for (int i = 0; i < 5; i++)
     {
-        data = i;
-        intLL.insert(data);
+        // data = i;
+        // nodePtr->data = i;
+        intLL.insertRecur(nodePtr, i);
     }
 
     // Print out the entires in the list
