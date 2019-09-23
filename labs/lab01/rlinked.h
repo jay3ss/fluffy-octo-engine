@@ -64,23 +64,13 @@ public:
     @return The integer number of entries in the list */
     int length() const;
 
-    /** Removes the entry at a given position from the list. A removal before
-    the last entry causes the renumbering of entries that follow the deleted
+    /** Removes the given entry from the list. A removal before the last entry
+    causes the renumbering of entries that follow the deleted
     one.
-    @pre    1 <= position <= length()
-    @post   The entry at the given position will be removed and the length will
-            be decreased by one
-    @param  position The position of the entry to remove
-    @return True if the entry was removed, false otherwise */
-    // bool remove(int position);
-
-    /** Removes the entry at a given position from the list. A removal before
-    the last entry causes the renumbering of entries that follow the deleted
-    one.
-    @pre    1 <= position <= length()
-    @post   The entry at the given position will be removed and the length will
-            be decreased by one
-    @param  position The position of the entry to remove
+    @pre    The given entry should be in the list
+    @post   The given entry will be removed and the length will be decreased by
+    one
+    @param  anEntru The entry to remove
     @return True if the entry was removed, false otherwise */
     bool remove(const T &anEntry);
 
@@ -89,18 +79,24 @@ public:
 private:
     int numEntries_;    // The number of entries currently in  the list
 
+    /** Finds the position of an entry in the list, if it is in the list
+    @param  anEntry The entry to find the position of
+    @return The position (>= 1) of the entry if it is in the list, -1 if the
+    entry is not in the list */
+    int positionOf(T &anEntry);
+
     /** Allocates memory for a new Node
     @post   Memory will be allocated for a new Node. This memory must be
     unallocated when finished with the Node
     @param  data The data that the Node will hold
     @return A pointer to the newly allocated memory for the Node */
-    Node<T>* newNode(T data);
+    Node<T> *newNode(T data);
 
     /** Frees up previously allocated memory for a Node
     @pre    Must have previously allocated memory for a Node
     @post   The Node will be deleted
     @param  node Reference to a pointer to a Node */
-    void deleteNode(Node<T>* &node);
+    void deleteNode(Node<T> *&node);
 };
 
 #include "rlinked.cpp"
