@@ -2,7 +2,7 @@
 
 /** Constructor */
 template <class T>
-LinkedList<T>::LinkedList(Node<T> *h) : numEntries_(0), head_(h) {}
+LinkedList<T>::LinkedList() : head_(nullptr), numEntries_(0) {}
 
 /** Copy constructor */
 template<class T>
@@ -94,12 +94,20 @@ bool LinkedList<T>::remove(const T &anEntry)
 
 /** Inserts an entry into this list (using recursion) in FIFO order by. */
 template <class T>
-Node<T> *LinkedList<T>::insertRecur(Node<T> *subChainPtr, const T &newEntry)
+Node<T> *LinkedList<T>::insertRecur(Node<T>* &subChainPtr, const T &newEntry)
 {
     // The list is empty, or we've reached the end of the chain
-    if (subChainPtr == nullptr)
+    if (isEmpty())
     {
-        subChainPtr = newNode(newEntry);
+        // Node<T>* nodePtr = newNode(newEntry);
+        head_ = subChainPtr;
+        // subChainPtr = nodePtr;
+        numEntries_++;
+    }
+    else if (subChainPtr == nullptr)
+    {
+        Node<T>* newNodePtr = newNode(newEntry);
+        subChainPtr = newNodePtr;
         numEntries_++;
     }
     // Keep going down the chain
@@ -107,7 +115,9 @@ Node<T> *LinkedList<T>::insertRecur(Node<T> *subChainPtr, const T &newEntry)
     {
         Node<T>* nodePtr = insertRecur(subChainPtr->next, newEntry);
         subChainPtr->next = nodePtr;
+        // head_ = subChainPtr;
     }
+
 
     return subChainPtr;
 }
