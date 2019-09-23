@@ -2,7 +2,15 @@
 #define _R_LINKED_H
 
 #include "ListInterface.h"
-#include "Node.h"
+
+// Node struct
+template <typename T>
+struct Node
+{
+    Node(T d) : data(d), next(nullptr) {}
+    T data;
+    Node *next;
+};
 
 template <class T>
 class LinkedList : public ListInterface<T>
