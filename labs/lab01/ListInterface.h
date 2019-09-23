@@ -42,14 +42,15 @@ public:
     @return The integer number of entries in the list */
     virtual int length() const = 0;
 
-    /** Removes the first or only occurrence of the given entry from this
-    sorted list
-    @post   The entry at the given position will be removed and the length will
-            be decreased by one
-    @param  anEntry The entry to remove
-    @return True if the entry was successfully removed, false otherwise */
-    // virtual bool remove(int position) = 0;
-    virtual bool remove(const T &anEntry) = 0;
+    /** Removes the entry at a given position from this list. A removal before the last entry
+    causes the renumbering of entries that follow the deleted
+    one.
+    @post If 1 <= position <= getLength() and the removal is successful, the
+    entry at the given position in the list is removed, other items are
+    renumbered accordingly, and the returned value is true.
+    @param position The list position of the entry to remove.
+    @return True if the entry was removed, false otherwise */
+    virtual bool remove(int position) = 0;
 };
 
 #endif // _LIST_INTERFACE_H
