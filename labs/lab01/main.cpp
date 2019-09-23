@@ -111,7 +111,7 @@ int main()
 
     // Print out the entires in the list
     int listLength = intLL.length();
-    for (int i = 0; i < listLength; i++)
+    for (int i = 0; i < listLength  + 1; i++)
     {
         cout << "Entry " << (i + 1) << ":\t" << intLL.entry(i) << endl;
     }
