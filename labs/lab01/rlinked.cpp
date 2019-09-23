@@ -2,7 +2,7 @@
 
 /** Constructor */
 template <class T>
-LinkedList<T>::LinkedList() : head_(nullptr), numEntries_(0) {}
+LinkedList<T>::LinkedList() : head(nullptr), numEntries_(0) {}
 
 /** Copy constructor */
 template<class T>
@@ -30,7 +30,7 @@ template <class T>
 T LinkedList<T>::entry(int position) const
 {
     // NOTE: this needs to raise an error if not 1 <= position <= length
-    Node<T>* tempNodePtr = head_;
+    Node<T>* tempNodePtr = head;
     if (1 <= position && position <= length())
     {
         int entryNum = 1;
@@ -57,7 +57,7 @@ the new one. */
 template<class T>
 bool LinkedList<T>::insert(const T &newEntry)
 {
-    head_ = insertRecur(head_, newEntry);
+    head = insertRecur(head, newEntry);
 
     return true;
 }
@@ -100,7 +100,7 @@ Node<T> *LinkedList<T>::insertRecur(Node<T>* &subChainPtr, const T &newEntry)
     if (isEmpty())
     {
         // Node<T>* nodePtr = newNode(newEntry);
-        head_ = subChainPtr;
+        head = subChainPtr;
         // subChainPtr = nodePtr;
         numEntries_++;
     }
@@ -115,7 +115,7 @@ Node<T> *LinkedList<T>::insertRecur(Node<T>* &subChainPtr, const T &newEntry)
     {
         Node<T>* nodePtr = insertRecur(subChainPtr->next, newEntry);
         subChainPtr->next = nodePtr;
-        // head_ = subChainPtr;
+        // head = subChainPtr;
     }
 
 

@@ -84,7 +84,7 @@ public:
     @return True if the entry was removed, false otherwise */
     bool remove(const T &anEntry);
 
-    Node<T> *head_; // Pointer to the head node
+    Node<T> *head; // Pointer to the head node
 
 private:
     int numEntries_;    // The number of entries currently in  the list
