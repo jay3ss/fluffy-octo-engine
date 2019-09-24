@@ -31,7 +31,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement h
+\float_placement H
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -87,7 +87,7 @@
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
-\paperpagestyle default
+\paperpagestyle plain
 \bullet 0 0 0 -1
 \tracking_changes false
 \output_changes false
@@ -402,11 +402,27 @@ Responsibilities
 \begin_inset Text
 
 \begin_layout Itemize
-Blah
+Get the number of entries in the list
 \end_layout
 
 \begin_layout Itemize
-Blahbity blah blah blah
+Test whether the list is empty
+\end_layout
+
+\begin_layout Itemize
+Add an entry to the list, if possible
+\end_layout
+
+\begin_layout Itemize
+Replace an entry that's in the list, if possible
+\end_layout
+
+\begin_layout Itemize
+Remove and entry from the list, if possible
+\end_layout
+
+\begin_layout Itemize
+Clear the list of all entries
 \end_layout
 
 \end_inset
@@ -430,11 +446,7 @@ Collaborators
 \begin_inset Text
 
 \begin_layout Itemize
-Blah
-\end_layout
-
-\begin_layout Itemize
-Blahbity blah blah blah
+The classes of objects that the list can contain
 \end_layout
 
 \end_inset
@@ -512,11 +524,27 @@ Responsibilities
 \begin_inset Text
 
 \begin_layout Itemize
-Blah
+Get the number of entries in the list
 \end_layout
 
 \begin_layout Itemize
-Blahbity blah blah blah
+Test whether the list is empty
+\end_layout
+
+\begin_layout Itemize
+Add an entry to the list, if possible
+\end_layout
+
+\begin_layout Itemize
+Replace an entry that's in the list, if possible
+\end_layout
+
+\begin_layout Itemize
+Remove and entry from the list, if possible
+\end_layout
+
+\begin_layout Itemize
+Clear the list of all entries
 \end_layout
 
 \end_inset
@@ -540,11 +568,125 @@ Collaborators
 \begin_inset Text
 
 \begin_layout Itemize
-Blah
+The 
+\family typewriter
+Node
+\family default
+ structure that contains objects
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+CRC for the 
+\family typewriter
+Node
+\family default
+ structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="1">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="70text%">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\series bold
+Node
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Responsibilities
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Hold a data entry
 \end_layout
 
 \begin_layout Itemize
-Blahbity blah blah blah
+Hold the address of another 
+\family typewriter
+Node
+\family default
+ structure
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Collaborators
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The classes of objects that the 
+\family typewriter
+Node
+\family default
+ can contain
 \end_layout
 
 \end_inset
@@ -704,7 +846,7 @@ integer
 \begin_layout Plain Layout
 
 \family typewriter
-+insert(newEntry: ItemType):
++insert(newEntry: T):
 \end_layout
 
 \end_inset
@@ -800,7 +942,7 @@ ItemType
 \begin_layout Plain Layout
 
 \family typewriter
-+entry(position: integer, newEntry: ItemType):
++entry(position: integer, newEntry: T):
 \end_layout
 
 \end_inset
@@ -857,7 +999,7 @@ LinkedList
 
 \emph on
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="2">
+<lyxtabular version="3" rows="14" columns="2">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -878,6 +1020,54 @@ LinkedList
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
++head
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+Node*
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+-numEntries_
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+integer
 \end_layout
 
 \end_inset
@@ -938,7 +1128,7 @@ integer
 \begin_layout Plain Layout
 
 \family typewriter
-+insert(newEntry: ItemType):
++insert(newEntry: T):
 \end_layout
 
 \end_inset
@@ -1021,7 +1211,7 @@ void
 \begin_layout Plain Layout
 
 \family typewriter
-ItemType
+T
 \end_layout
 
 \end_inset
@@ -1034,7 +1224,7 @@ ItemType
 \begin_layout Plain Layout
 
 \family typewriter
-+entry(position: integer, newEntry: ItemType):
++entry(position: integer, newEntry: T):
 \end_layout
 
 \end_inset
@@ -1052,13 +1242,85 @@ void
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \family typewriter
-+insertRecur(newEntry: ItemType):
++insertRecur(subChainPtr: Node*, newEntry: T):
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+Node*
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+-newNode(data: T):
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+Node*
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+-deleteNode(node: Node*):
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+void
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+-nodeAt(position: integer):
 \end_layout
 
 \end_inset
@@ -1069,7 +1331,121 @@ void
 \begin_layout Plain Layout
 
 \family typewriter
-boolean
+Node*
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+UML diagram for the 
+\family typewriter
+Node
+\family default
+ structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\emph on
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+Node
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
++data:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
++next:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+Node*
 \end_layout
 
 \end_inset
@@ -1320,7 +1696,7 @@ nameref{sec:tests}}
 \end_layout
 
 \begin_layout Standard
-The functionality that is tested is (given in chapter 12):
+The functionality that is tested is:
 \end_layout
 
 \begin_layout Enumerate
@@ -1336,15 +1712,7 @@ Insert an entry into the list
 \end_layout
 
 \begin_layout Enumerate
-Remove a given entry from a the list
-\end_layout
-
-\begin_layout Enumerate
 Remove the entry at a given position from the list
-\end_layout
-
-\begin_layout Enumerate
-Remove all entries from the the list
 \end_layout
 
 \begin_layout Enumerate
@@ -1352,7 +1720,11 @@ Get the entry at a given position in the list
 \end_layout
 
 \begin_layout Enumerate
-Get the position in the list of a given entry
+Remove all entries from the the list
+\end_layout
+
+\begin_layout Enumerate
+Replace an entry at a given position in the list with a new entry
 \end_layout
 
 \begin_layout Subsection*
@@ -1379,6 +1751,232 @@ addcontentsline{toc}{subsection}{
 nameref{subsec:inputs}}
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Inputs for the tests
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Test Number
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+N/A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+N/A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+newEntry: 5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+position: 1, 3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+position: 2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+N/A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+position: 6, newEntry: 1,000,000
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -1414,6 +2012,454 @@ nameref{subsec:outputs}}
 \end_layout
 
 \begin_layout Standard
+The following is the output from the main program, which implements the
+ tests given in this section:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Testing the linked-list:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+========================
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+1.
+ The initial list is empty
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+----------------------------
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+The list should be empty
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+isEmpty(): returns 1; should be 1 (true)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+2.
+ Get the number of entries in the (empty) list
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+------------------------------------------------
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+The number of entries should be 0
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+length(): returns 0; should be 0
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+3.
+ Insert an entry into the list
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+--------------------------------
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+The node should have been inserted
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+intLL.insertRecur(nodePtr, data)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+The number of entries should be 1
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+length(): returns 1; should be 1
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+4.
+ Remove an entry at a given position from the list
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+----------------------------------------------------
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+The first node should have been removed
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+remove(1): returns 1; should be 1 (true)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+The number of entries should be 5
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+length(): returns 5; should be 5
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+The third node should have been removed
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+remove(3): returns 1; should be 1 (true)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+The number of entries should be 4
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+length(): returns 4; should be 4
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+5.
+ Get the entry at a given position in the list
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+------------------------------------------------
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+The entry should have been returned
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+entry(2): returns 1; should be 0
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+6.
+ Remove all entries from the list
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+-----------------------------------
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+The list should be empty
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+isEmpty(): returns 1; should be 1 (true)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+The number of entries should be 0
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+length(): returns 0; should be 0
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+7.
+ Replace an entry at a given position in the list with a new entry
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+--------------------------------------------------------------------
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+int oldEntry = intLL.entry(6);
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+int newEntry = 1000000;
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+intLL.entry(6, newEntry);
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+oldEntry == intLL.entry(6): returns 0; should be 0 (false)
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+newEntry == intLL.entry(6): returns 1; should be 1 (true)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Entry 1: 5
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Entry 2: 4
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Entry 3: 3
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Entry 4: 2
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Entry 5: 1
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Entry 6: 1000000
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Entry 7: -1
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Entry 8: -2
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Entry 9: -3
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Entry 10: -4
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Entry 11: -5
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -1444,44 +2490,6 @@ label{sec:listoftables}
 
 \backslash
 addcontentsline{toc}{section}{List of Tables}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-label{sec:listoffigures}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-addcontentsline{toc}{section}{List of Figures}
 \end_layout
 
 \end_inset
