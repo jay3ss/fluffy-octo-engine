@@ -8,14 +8,23 @@ LinkedList<T>::LinkedList() : head(nullptr), numEntries_(0) {}
 template<class T>
 LinkedList<T>::LinkedList(const LinkedList<T>& list)
 {
-
+    // We only need to do something if the list isn't empty
+    if (!list.isEmpty())
+    {
+        T entry;
+        for (int position = 1; position <= list.length(); position++)
+        {
+            entry = list.entry(position);
+            insert(position, entry);
+        }
+    }
 }
 
 /** Destructor */
 template<class T>
 LinkedList<T>::~LinkedList()
 {
-
+    clear();
 }
 
 /** Removes all entries from the list */
