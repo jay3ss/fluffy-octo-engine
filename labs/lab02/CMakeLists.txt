@@ -4,10 +4,10 @@ project(csis212lab02)
 
 set(SOURCES
     main.cpp
-    StackInterface.h
     LinkedStack.h
     Node.h
     PostfixEvaluator.cpp
+    StackInterface.h
 )
 
 add_executable(main ${SOURCES})
