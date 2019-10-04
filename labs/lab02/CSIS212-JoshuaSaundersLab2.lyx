@@ -35,7 +35,7 @@
 \paperfontsize default
 \spacing single
 \use_hyperref true
-\pdf_title "Lab 1 - Linked List Using Recursion"
+\pdf_title "Lab 2 - Evaluating Postfix Expressions Using a Stack"
 \pdf_author "Joshua Saunders"
 \pdf_subject "GCC CSIS 212 - Advanced Data Structures"
 \pdf_bookmarks true
@@ -99,7 +99,7 @@
 \begin_body
 
 \begin_layout Title
-Lab 2 - Using Stacks to Evaluate Postfix Expressions
+Lab 2 - Evaluating Postfix Expressions Using a Stack
 \end_layout
 
 \begin_layout Author
