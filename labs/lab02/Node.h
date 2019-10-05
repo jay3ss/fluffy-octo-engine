@@ -5,15 +5,16 @@ template<class T>
 class Node
 {
 private:
-    T        item;
+    T        entry;
     Node<T>* next;
+
 public:
     Node() {}
-    Node(const T& anItem);
-    Node(const T &anItem, Node<T> *nextNodePtr);
-    void setItem(const T& anItem);
+    Node(const T& anEntry);
+    Node(const T &anEntry, Node<T> *nextNodePtr);
+    void setEntry(const T& anEntry);
     void setNext(Node<T>* nextNodePtr);
-    T getItem() const;
+    T getEntry() const;
     Node<T>* getNext() const;
 };
 

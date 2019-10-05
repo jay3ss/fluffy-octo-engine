@@ -1,17 +1,16 @@
 #include "Node.h"
-#include <cstddef>
 
 template<class T>
-Node<T>::Node(const T& anItem) : item(anItem), next(nullptr) {}
+Node<T>::Node(const T& anEntry) : entry(anEntry), next(nullptr) {}
 
 template <class T>
-Node<T>::Node(const T &anItem, Node<T> *nextNodePtr) :
-    item(anItem), next(nextNodePtr) {}
+Node<T>::Node(const T &anEntry, Node<T> *nextNodePtr) :
+    entry(anEntry), next(nextNodePtr) {}
 
 template<class T>
-void Node<T>::setItem(const T& anItem)
+void Node<T>::setEntry(const T& anEntry)
 {
-    item = anItem;
+    entry = anEntry;
 }
 
 template<class T>
@@ -21,9 +20,9 @@ void Node<T>::setNext(Node<T>* nextNodePtr)
 }
 
 template<class T>
-T Node<T>::getItem() const
+T Node<T>::getEntry() const
 {
-    return item;
+    return entry;
 }
 
 template<class T>
