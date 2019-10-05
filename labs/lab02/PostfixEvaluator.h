@@ -15,7 +15,6 @@ public:
 
     /** Destructor */
     ~PostfixEvaluator();
-    // void evaluate();
 
     /** Evaluates a postfix expression and returns the result
     @pre        expression must be a valid postfix expression. E.g., formatted
@@ -25,19 +24,20 @@ public:
 
     or concretely
 
-    2 1 3 + *
+    2 1 3 + * // which would return 8
 
-    which would return 8. NOTE: DOUBLE CHECK THIS!!!
-
-    spaces between each argument (operators and operands) and no leading or
-    trailing white space.
+    with spaces between each argument (operators and operands) and no leading
+    or trailing white space. Also, it is assumed that every character is either
+    an operator, operand, or a whitespace (the delimiter).
     @param      expression The postfix expression to be evaluated
     @returns    The result of the postfix expression */
     double evaluate(std::string expression);
 private:
+    /** Determines if a token is an operand */
     bool isOperand(std::string token);
+
+    /** Determines if a token is an operand: +, -, *, or / */
     bool isOperator(std::string token);
-    bool isParenthesis(std::string token);
 
     /** Evaluates a single postfix operation
     @pre    If operand is division ('/'), then op2 cannot equal zero
