@@ -12,10 +12,33 @@ double PostfixEvaluator::evaluate(std::string expression)
     LinkedStack<double> operands;
 
     std::vector<std::string> tokens = tokenize(expression);
-    double op1 = std::stod(tokens[0]);
-    double op2 = std::stod(tokens[1]);
-    char opertr = tokens[2][0];
-    double result = evalOperation(op1, op2, opertr);
+    double result;
+
+    for (auto token: tokens)
+    {
+        // Every token is either an operator or an operand
+        if (!isOperator(token))
+        {
+            double op = std::stod(token);
+            operands.push(op);
+        }
+        else
+        {
+            // Get the two operands off of the stack
+            double op2 = operands.peek();
+            operands.pop();
+            double op1 = operands.peek();
+            operands.pop();
+
+            // Get the operator token and convert it to a char
+            char opertr = static_cast<char>(token[0]);
+
+            result = evalOperation(op1, op2, opertr);
+
+            // Store the result back on the stack
+            operands.push(result);
+        }
+    }
 
     return result;
 }
@@ -64,4 +87,11 @@ std::vector<std::string> PostfixEvaluator::tokenize(std::string expression)
     }
 
     return tokens;
+}
+
+/** Determines if a token is an operand */
+bool PostfixEvaluator::isOperator(std::string token)
+{
+    bool operand = (token == "+") || (token == "-") ||
+                   (token == "*") || (token == "\\");
 }

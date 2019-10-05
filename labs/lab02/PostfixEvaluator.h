@@ -35,9 +35,9 @@ public:
     @returns    The result of the postfix expression */
     double evaluate(std::string expression);
 private:
-    bool isOperand(std::string str);
-    bool isOperator(std::string str);
-    bool isParenthesis(std::string str);
+    bool isOperand(std::string token);
+    bool isOperator(std::string token);
+    bool isParenthesis(std::string token);
 
     /** Evaluates a single postfix operation
     @pre    If operand is division ('/'), then op2 cannot equal zero

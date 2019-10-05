@@ -526,7 +526,7 @@ The
 \family typewriter
 Node
 \family default
- structure that contains objects
+ class that contains objects
 \end_layout
 
 \end_inset
@@ -1071,7 +1071,7 @@ boolean
 \begin_layout Plain Layout
 
 \family typewriter
-ItemType
+T
 \end_layout
 
 \end_inset
@@ -1117,7 +1117,7 @@ LinkedStack
 
 \emph on
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="2">
+<lyxtabular version="3" rows="6" columns="2">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -1162,30 +1162,6 @@ LinkedStack
 
 \family typewriter
 Node*
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
--numEntries_
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-integer
 \end_layout
 
 \end_inset
@@ -1281,7 +1257,7 @@ boolean
 \begin_layout Plain Layout
 
 \family typewriter
-ItemType
+T
 \end_layout
 
 \end_inset
@@ -1587,8 +1563,6 @@ PostfixEvaluator
 
 \begin_layout Plain Layout
 
-\family typewriter
--operands
 \end_layout
 
 \end_inset
@@ -1598,8 +1572,6 @@ PostfixEvaluator
 
 \begin_layout Plain Layout
 
-\family typewriter
-LinkedStack
 \end_layout
 
 \end_inset
@@ -1611,8 +1583,6 @@ LinkedStack
 
 \begin_layout Plain Layout
 
-\family typewriter
--result_
 \end_layout
 
 \end_inset
@@ -1622,8 +1592,6 @@ LinkedStack
 
 \begin_layout Plain Layout
 
-\family typewriter
-double
 \end_layout
 
 \end_inset
@@ -1647,7 +1615,7 @@ double
 \begin_layout Plain Layout
 
 \family typewriter
-void
+double
 \end_layout
 
 \end_inset
@@ -1660,7 +1628,7 @@ void
 \begin_layout Plain Layout
 
 \family typewriter
-+result()
+-evalOperation(op1: double, op2: double, opertr: char):
 \end_layout
 
 \end_inset
@@ -1756,7 +1724,7 @@ boolean
 \begin_layout Plain Layout
 
 \family typewriter
--evaluateLine(input: istream, okay: bool, answer: double)
+-evaluateLine(input: istream, okay: bool, answer: double):
 \end_layout
 
 \end_inset
@@ -1780,7 +1748,7 @@ bool
 \begin_layout Plain Layout
 
 \family typewriter
--validateArgc(argc: int)
+-validateArgc(argc: int):
 \end_layout
 
 \end_inset
@@ -1804,7 +1772,7 @@ bool
 \begin_layout Plain Layout
 
 \family typewriter
--openForRead(filename: char[], f: ifstream)
+-openForRead(filename: char[], f: ifstream):
 \end_layout
 
 \end_inset
@@ -1828,7 +1796,7 @@ void
 \begin_layout Plain Layout
 
 \family typewriter
--evaluateStackTop(operator: char, numbers: LinkedStack, okay: bool)
+-evaluateStackTop(operator: char, numbers: LinkedStack, okay: bool):
 \end_layout
 
 \end_inset
@@ -1852,7 +1820,7 @@ void
 \begin_layout Plain Layout
 
 \family typewriter
--isMore(source: istream)
+-isMore(source: istream):
 \end_layout
 
 \end_inset
@@ -1875,6 +1843,8 @@ bool
 
 \begin_layout Plain Layout
 
+\family typewriter
+-tokenize(expression: string):
 \end_layout
 
 \end_inset
@@ -1884,6 +1854,8 @@ bool
 
 \begin_layout Plain Layout
 
+\family typewriter
+vector
 \end_layout
 
 \end_inset
