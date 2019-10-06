@@ -4,6 +4,7 @@ project(csis212lab02)
 
 set(SOURCES
     main.cpp
+    FileReader.cpp
     LinkedStack.h
     Node.h
     PostfixEvaluator.cpp
