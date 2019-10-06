@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 11)
 project(csis212lab02)
 
-set(SOURCES
+set(FULL_SOURCES
     main.cpp
     FileReader.cpp
     LinkedStack.h
@@ -11,4 +11,4 @@ set(SOURCES
     StackInterface.h
 )
 
-add_executable(main ${SOURCES})
+add_executable(main ${FULL_SOURCES})
