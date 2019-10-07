@@ -19,7 +19,7 @@ double PostfixEvaluator::evaluate(std::string expression)
         // Every token is either an operator or an operand
         if (!isOperator(token))
         {
-            double op = std::stod(token);
+            double op = convertToOperand(token);
             operands.push(op);
         }
         else
@@ -41,6 +41,18 @@ double PostfixEvaluator::evaluate(std::string expression)
     }
 
     return result;
+}
+
+double PostfixEvaluator::convertToOperand(std::string token)
+{
+    try
+    {
+        return std::stod(token);
+    }
+    catch (std::invalid_argument)
+    {
+        throw InvalidExpressionException();
+    }
 }
 
 /** Evaluates a single postfix operation */
@@ -92,6 +104,5 @@ std::vector<std::string> PostfixEvaluator::tokenize(std::string expression)
 /** Determines if a token is an operand */
 bool PostfixEvaluator::isOperator(std::string token)
 {
-    bool operand = (token == "+") || (token == "-") ||
-                   (token == "*") || (token == "\\");
+    return (token == "+") || (token == "-") || (token == "*") || (token == "/");
 }
