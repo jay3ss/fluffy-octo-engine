@@ -14,8 +14,9 @@ public:
 
     /** Reads and returns the next line in the expression file
     @pre    Must have another line to read
-    @post   The
-    */
+    @post   The internal fstream object will point to the next line in the
+    file
+    @returns One line of text from the file */
     std::string getline();
 
     /** Opens the expression file */
