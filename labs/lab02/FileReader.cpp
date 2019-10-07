@@ -1,12 +1,15 @@
 #include "FileReader.h"
 
+/** Default constructor */
+FileReader::FileReader() {}
+
+/** Constructor */
 FileReader::FileReader(std::string fileName)
 {
     open(fileName);
 }
 
-FileReader::FileReader() {}
-
+/** Destructor */
 FileReader::~FileReader()
 {
     expressionFile_.close();

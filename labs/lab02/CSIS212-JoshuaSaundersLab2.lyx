@@ -6,6 +6,7 @@
 \origin unavailable
 \textclass book
 \begin_preamble
+\usepackage{algorithm,algpseudocode}
 \newcommand{\tabitem}{~~\llap{\textendash}~~}
 \end_preamble
 \use_default_options true
@@ -670,7 +671,7 @@ status open
 \begin_layout Plain Layout
 CRC for the 
 \family typewriter
-EvaluatorInterface
+FileReader
 \family default
  class
 \end_layout
@@ -693,7 +694,7 @@ EvaluatorInterface
 \begin_layout Plain Layout
 
 \family typewriter
-EvaluatorInterface
+FileReader
 \end_layout
 
 \end_inset
@@ -717,11 +718,15 @@ Responsibilities
 \begin_inset Text
 
 \begin_layout Itemize
-Evaluate arithmetic expressions
+Open a file containing postfix expressions
 \end_layout
 
 \begin_layout Itemize
-Display the result of the evaluated arithmetic expressions
+Return one line of the file at a time
+\end_layout
+
+\begin_layout Itemize
+Determine if the end of the file has been reached
 \end_layout
 
 \end_inset
@@ -745,7 +750,21 @@ Collaborators
 \begin_inset Text
 
 \begin_layout Itemize
-The classes of objects that the stack can contain
+
+\family typewriter
+fstream
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+iostream
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+string
 \end_layout
 
 \end_inset
@@ -858,25 +877,19 @@ LinkedStack
 \begin_layout Itemize
 
 \family typewriter
-double
+sstream
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-char
+vector
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-istream
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-ifstream
+string
 \end_layout
 
 \end_inset
@@ -1402,7 +1415,7 @@ status open
 \begin_layout Plain Layout
 UML diagram for the 
 \family typewriter
-EvaluatorInterface
+FileReader
 \family default
  class
 \end_layout
@@ -1417,7 +1430,7 @@ EvaluatorInterface
 
 \emph on
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
+<lyxtabular version="3" rows="5" columns="2">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -1428,7 +1441,7 @@ EvaluatorInterface
 \begin_layout Plain Layout
 
 \family typewriter
-EvaluatorInterface
+FileReader
 \end_layout
 
 \end_inset
@@ -1450,7 +1463,7 @@ EvaluatorInterface
 \begin_layout Plain Layout
 
 \family typewriter
-+evaluate(expression: std::string):
+-expressionFile_:
 \end_layout
 
 \end_inset
@@ -1461,31 +1474,79 @@ EvaluatorInterface
 \begin_layout Plain Layout
 
 \family typewriter
-void
+fstream
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \family typewriter
-+result():
++getline():
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \family typewriter
-double
+string
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
++isEof():
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+bool
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
++open(fileName: string):
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+void
 \end_layout
 
 \end_inset
@@ -1531,7 +1592,7 @@ PostfixEvaluator
 
 \emph on
 \begin_inset Tabular
-<lyxtabular version="3" rows="14" columns="2">
+<lyxtabular version="3" rows="6" columns="2">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -1563,6 +1624,8 @@ PostfixEvaluator
 
 \begin_layout Plain Layout
 
+\family typewriter
+-tokenize(expression: string):
 \end_layout
 
 \end_inset
@@ -1572,50 +1635,8 @@ PostfixEvaluator
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \family typewriter
-+evaluate(expression: std::string):
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-double
+vector
 \end_layout
 
 \end_inset
@@ -1652,7 +1673,31 @@ double
 \begin_layout Plain Layout
 
 \family typewriter
--isOperand(ch: std::string):
+-convertToOperand(token: string)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+double
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+-isOperator(ch: string):
 \end_layout
 
 \end_inset
@@ -1670,192 +1715,24 @@ boolean
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \family typewriter
--isOperator(ch: std::string):
++evaluate(expression: string):
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \family typewriter
-boolean
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
--isParenthesis(ch: std::string):
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-boolean
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
--evaluateLine(input: istream, okay: bool, answer: double):
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-bool
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
--validateArgc(argc: int):
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-bool
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
--openForRead(filename: char[], f: ifstream):
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-void
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
--evaluateStackTop(operator: char, numbers: LinkedStack, okay: bool):
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-void
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
--isMore(source: istream):
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-bool
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
--tokenize(expression: string):
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-vector
+double
 \end_layout
 
 \end_inset
@@ -1874,7 +1751,158 @@ vector
 \end_layout
 
 \begin_layout Subsection*
-Specifications
+Algorithm
+\end_layout
+
+\begin_layout Standard
+To evaluate the postfix expression, a stack is used.
+ The stack in use is the one described in the book in chapters 6 (the interface)
+ and 7 (the linked-stack).
+ The pseudocode is as follows (from Main & Savitch)
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Michael Main, Walter Savitch - Data Structures and Other Objects Using C++,
+ Pearson (2010).
+ Pg.
+ 380
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Postfix evaulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+1.
+ Initialize stack of type double
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+do
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+if(next input is a number)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+
+\begin_inset Formula $\qquad$
+\end_inset
+
+Read the next input and push it onto the stack
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+else
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+
+\begin_inset Formula $\qquad$
+\end_inset
+
+Read the next character, which is an operation symbol.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+
+\begin_inset Formula $\qquad$
+\end_inset
+
+Use top and pop to get the two numbers off the stack.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+
+\begin_inset Formula $\qquad$
+\end_inset
+
+Combine these two numbers with the operation (using the second number popped
+ as the left operand).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+
+\begin_inset Formula $\qquad$
+\end_inset
+
+Push the result onto the stack.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+while ( there is more of the expression to read );
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ At this point, the stack contains one number, which is the value of the
+ expression.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Notes
 \end_layout
 
 \begin_layout Standard
@@ -1885,7 +1913,7 @@ status open
 
 
 \backslash
-label{subsec:specs}
+label{subsec:notes}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1894,12 +1922,50 @@ label{subsec:specs}
 \backslash
 addcontentsline{toc}{subsection}{
 \backslash
-nameref{subsec:specs}}
+nameref{subsec:notes}}
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The postfix expressions to be evaluated will be assumed to be correctly
+ formed, except for spacing.
+ For example, the 
+\family typewriter
+PostfixEvaluator 
+\family default
+class will throw an error if there are any leading or trailing spaces or
+ if there extra spaces in the middle of the expression.
+ Operators and operands will be delimited by a space character.
+ All operands are assumed to be positive numbers.
+ If a number is to be negative then a positive number should be used along
+ with the subtraction operator.
+ Also, every character (token) in the expression is assumed to be either
+ an operator or an operand.
+ If an expression contains a character that is neither an operator nor an
+ operand, then an error will be thrown.
+\end_layout
+
+\begin_layout Standard
+The expressions file, that is to be read by 
+\family typewriter
+FileReader 
+\family default
+class and evaluated by the 
+\family typewriter
+PostfixEvaluator 
+\family default
+class is to assumed to have the expressions formatted as described above
+ and for each expression to be separated by the newline ('
+\family typewriter
+
+\backslash
+n
+\family default
+') character.
 \end_layout
 
 \begin_layout Section*
@@ -2066,14 +2132,46 @@ nameref{subsec:run}}
 
 \end_layout
 
-\begin_layout Standard
-From the 
+\begin_layout Itemize
+To run the 
+\family typewriter
+main
+\family default
+ program, from the 
 \family typewriter
 build
 \family default
  directory: 
 \family typewriter
 ./main
+\end_layout
+
+\begin_layout Itemize
+To run the 
+\family typewriter
+FileReader
+\family default
+ class test program, from the 
+\family typewriter
+build
+\family default
+ directory: 
+\family typewriter
+./testfilereader
+\end_layout
+
+\begin_layout Itemize
+To run the 
+\family typewriter
+PostfixEvaluator
+\family default
+ class tests program, from the 
+\family typewriter
+build
+\family default
+ directory: 
+\family typewriter
+./testpostfixevaluator
 \end_layout
 
 \begin_layout Section*
@@ -2105,32 +2203,12 @@ nameref{sec:tests}}
 
 \end_layout
 
-\begin_layout Standard
-The functionality that is tested is:
-\end_layout
-
-\begin_layout Enumerate
-Test whether the stack is empty
-\end_layout
-
-\begin_layout Enumerate
-Get the number of entries in the stack
-\end_layout
-
-\begin_layout Enumerate
-Push an entry onto the top of the stack
-\end_layout
-
-\begin_layout Enumerate
-Remove the entry at the top of the stack
-\end_layout
-
-\begin_layout Enumerate
-Get the entry at the top of the the stack
-\end_layout
-
 \begin_layout Subsection*
-Inputs
+
+\family typewriter
+FileReader
+\family default
+ Class Tests
 \end_layout
 
 \begin_layout Standard
@@ -2141,7 +2219,7 @@ status open
 
 
 \backslash
-label{subsec:inputs}
+label{subsec:FileReaderTests}
 \end_layout
 
 \begin_layout Plain Layout
@@ -2150,12 +2228,44 @@ label{subsec:inputs}
 \backslash
 addcontentsline{toc}{subsection}{
 \backslash
-nameref{subsec:inputs}}
+nameref{subsec:FileReaderTests}}
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The 
+\family typewriter
+FileReader
+\family default
+ class test program tests that
+\end_layout
+
+\begin_layout Enumerate
+attempting to open a non-existent file throws an error
+\end_layout
+
+\begin_layout Enumerate
+attempting to open an existent file does not throw an error
+\end_layout
+
+\begin_layout Enumerate
+the object can determine if the end of file (
+\family typewriter
+EOF
+\family default
+) has been reached
+\end_layout
+
+\begin_layout Enumerate
+the file can be read one line at a time
+\end_layout
+
+\begin_layout Subsubsection*
+Inputs
 \end_layout
 
 \begin_layout Standard
@@ -2165,8 +2275,399 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Inputs for the tests
+\end_layout
+
+\end_inset
+
 
 \end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Test Number
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Quotes eld
+\end_inset
+
+does-not-exist.txt
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Quotes eld
+\end_inset
+
+expressions.txt
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+N/A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+N/A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Outputs
+\end_layout
+
+\begin_layout Standard
+The following is the output from the test program, which implements the
+ tests given in this section:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
++------------------------------+ 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+| Testing the FileReader class | 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
++------------------------------+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Attempting to open a non-existent file 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+--------------------------------------
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Attempting to open a non-existent file should throw an error 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+ERROR: File does not exist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Attempting to open an existent file 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+----------------------------------- 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Attempting to open an existent file should not throw an error
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Read lines until the end of the expression file is reached
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+----------------------------------------------------------
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Expression 1: 1 2 + 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Expression 2: 2 3 + 7 * 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Expression 3: 2 3 4 + * 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Expression 4: 5 3 2 * + 4 - 5 + 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Expression 5: 6 3 + 2 * 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Expression 6: 1 0 / 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Expression 7: 2 1 3 + * 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Expression 8: 2 1 3.2 + * 
+\end_layout
+
+\begin_layout Subsection*
+
+\family typewriter
+PostfixEvaluator
+\family default
+ Class Tests
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{subsec:PostfixEvaluatorTests}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{subsection}{
+\backslash
+nameref{subsec:PostfixEvaluatorTests}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\family typewriter
+PostfixEvaluator
+\family default
+ class test program tests that
+\end_layout
+
+\begin_layout Enumerate
+evaluating a correctly formed expression returns the correct result
+\end_layout
+
+\begin_layout Enumerate
+attempting to evaluate an expression with a leading space throws an error
+\end_layout
+
+\begin_layout Enumerate
+attempting to evaluate an expression with an extra space throws an error
+\end_layout
+
+\begin_layout Enumerate
+attempting to evaluate an expression with a trailing space throws an error
+\end_layout
+
+\begin_layout Enumerate
+attempting to evaluate an expression that divides by zero throws an error
+\end_layout
+
+\begin_layout Subsubsection*
+Inputs
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -2368,10 +2869,6 @@ position: 6, newEntry: 1,000,000
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2384,8 +2881,181 @@ position: 6, newEntry: 1,000,000
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsubsection*
 Outputs
+\end_layout
+
+\begin_layout Standard
+The following is the output from the test program, which implements the
+ tests given in this section:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
++------------------------------------+ 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+| Testing the PostfixEvaluator class | 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
++------------------------------------+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Test evaluating a correctly formed postfix expression
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+----------------------------------------------------- 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+evaluate(2 1 3 + *): returns 8; should return 8
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Test evaluating incorrectly formed postfix expressions
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+------------------------------------------------------ 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+a.
+ Expression with a leading space 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+evaluate( 2 1 3 + *) should throw an error.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Results in ERROR: Invalid expression
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+b.
+ Expression with an extra space within the expression 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+evaluate(2  1 3 + *) should throw an error.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Results in ERROR: Invalid expression
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+c.
+ Expression with a trailing space 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+evaluate(2 1 3 + * ) should throw an error.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Results in ERROR: Invalid expression
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+d.
+ Expression that includes division zero 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+evaluate(1 0 /) should throw an error.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Results in ERROR: Division by zero.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Main Program Tests
 \end_layout
 
 \begin_layout Standard
@@ -2396,7 +3066,7 @@ status open
 
 
 \backslash
-label{subsec:outputs}
+label{subsec:MainProgramTests}
 \end_layout
 
 \begin_layout Plain Layout
@@ -2405,7 +3075,7 @@ label{subsec:outputs}
 \backslash
 addcontentsline{toc}{subsection}{
 \backslash
-nameref{subsec:outputs}}
+nameref{subsec:MainProgramTests}}
 \end_layout
 
 \end_inset
@@ -2414,8 +3084,156 @@ nameref{subsec:outputs}}
 \end_layout
 
 \begin_layout Standard
+The main test program tests that a 
+\family typewriter
+FileReader
+\family default
+ object can load the expressions file and pass one expression at a time
+ to a 
+\family typewriter
+PostfixEvaluator
+\family default
+ object which, in turn, evaluates each expression correctly.
+\end_layout
+
+\begin_layout Subsubsection*
+Inputs
+\end_layout
+
+\begin_layout Standard
+The input to the 
+\family typewriter
+FileReader
+\family default
+ object is the expressions file and the input to the 
+\family typewriter
+PostfixEvaluator
+\family default
+ object is the contents of the expression file, shown below.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+1 2 + 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+2 3 + 7 * 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+2 3 4 + * 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+5 3 2 * + 4 - 5 + 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+6 3 + 2 * 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+1 0 / 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+2 1 3 + * 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+2 1 3.2 + *
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Outputs
+\end_layout
+
+\begin_layout Standard
 The following is the output from the main program, which implements the
  tests given in this section:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Evaluating expressions file 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+--------------------------- 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+1 2 + = 3 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+2 3 + 7 * = 35 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+2 3 4 + * = 14 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+5 3 2 * + 4 - 5 + = 12 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+6 3 + 2 * = 18 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+1 0 / = ERROR: Division by zero.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+2 1 3 + * = 8 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+2 1 3.2 + * = 8.4 
 \end_layout
 
 \begin_layout Standard

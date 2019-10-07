@@ -7,6 +7,8 @@
 
 using namespace std;
 
+// Function prototype
+/** Opens a file */
 bool openFile(FileReader &reader, string fileName);
 
 int main()
@@ -25,10 +27,11 @@ int main()
     string expr = filereader.getline();
     while (filereader.isEof())
     {
+        cout << expr << " = ";
         try
         {
             double result = evaluator.evaluate(expr);
-            cout << expr << " = " << result << endl;
+            cout << result << endl;
         }
         catch (InvalidExpressionException)
         {
@@ -44,6 +47,10 @@ int main()
     return 0;
 }
 
+/** Opens a file
+@post   The FileReader object will have an open file
+@param  reader A reference to the FileReader object
+@param  fileName The name of (path to) the file to open*/
 bool openFile(FileReader &reader, string fileName)
 {
     try

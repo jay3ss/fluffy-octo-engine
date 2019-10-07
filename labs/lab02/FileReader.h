@@ -8,8 +8,13 @@
 class FileReader
 {
 public:
-    FileReader(std::string fileName);
+    /** Default constructor */
     FileReader();
+
+    /** Constructor */
+    FileReader(std::string fileName);
+
+    /** Destructor */
     ~FileReader();
 
     /** Reads and returns the next line in the expression file
