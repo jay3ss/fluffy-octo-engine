@@ -43,3 +43,9 @@
 # Ignore VS Code artifacts
 .vscode/
 launch.json
+
+# PDF files
+*.pdf
+
+# zip files
+*.zip
