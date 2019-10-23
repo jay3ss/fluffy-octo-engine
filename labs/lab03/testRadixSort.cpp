@@ -9,12 +9,8 @@ int main()
 {
     const int numElems = 10;
     string strArray[] = {
-        // "abc", "xyz", "bwz", "aac", "rlt", "jbx", "aaa"
         "abc", "xyz", "bwz", "aac", "rlt", "jbx", "rdt", "klt", "aeo", "tlj"
     };
-
-    // const int numElems = 3;
-    // string strArray[] = {"abc", "aac", "aaa"};
 
     LinkedList<string> stringList;
 
